@@ -57,4 +57,23 @@ public class Customer {
 				+ " frequent renter points";
 		return result;
 	}
+	
+	public String htmlStatement(String statementString) {
+		String htmlStatementString = "";
+		String[] parts = statementString.split("\n");
+
+		for (String part : parts) {
+			if (part.indexOf("Rental Record")> -1) {
+				part = "<h1>" + part + "</h1>";
+			} else if (part.indexOf("Amount owed") > -1 || part.indexOf("You earned") > -1) {
+				part = "<p>" + part + "</p>";
+			} else {
+				part = part.replaceFirst("\t", "");
+				part = part.replaceAll("\t", " ");
+				part = "<h2>" + part + "</h2>";
+			}
+			htmlStatementString += part;
+		}
+		return htmlStatementString;
+	}
 }

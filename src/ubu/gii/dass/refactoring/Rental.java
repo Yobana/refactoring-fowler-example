@@ -28,7 +28,7 @@ public class Rental {
 	}
 	
 	// determine amounts for each line
-	double getAmountFor() {
+	public double getAmountFor() {
 		double amount = 0;
 		switch (getMovie().getPriceCode()) {
 		case Movie.REGULAR:
